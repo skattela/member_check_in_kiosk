@@ -1,0 +1,59 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "materialize/css/materialize.css" %}">
+<script type="text/javascript" src="{% static "materialize/js/materialize.js" %}"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        <a href="#" class="brand-logo center">Member</a>
+    </div>
+</nav>
+
+
+<ul id="slide-out" class="sidenav sidenav-fixed">
+    <li>
+        <div class="user-view">
+            <div class="background">
+            </div>
+            <a><img class="circle"></a>
+            <a><span class="white-text name">John Doe</span></a>
+            <a><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+    </li>
+    <li><a href="{% url 'member_checkin:members' %}"><i class="material-icons">person</i>Members</a></li>
+    <li><a href="{% url 'member_checkin:checkins' %}"><i class="material-icons">insert_chart</i>Check Ins</a></li>
+</ul>
+
+<script>M.AutoInit();</script>
+
+<table>
+    <tr>
+        <td><p>Last Name:</p></td>
+        <td><p>{{ member.last_name }}</p></td>
+    </tr>
+    <tr>
+        <td><p>First Name:</p></td>
+        <td><p>{{ member.first_name }}</p></td>
+    </tr>
+    <tr>
+        <td><p>Member Id:</p></td>
+        <td><p>{{ member.member_id }}</p></td>
+    </tr>
+    <tr>
+        <td><p>Card Id:</p></td>
+        <td><p>{{ member.card_id }}</p></td>
+    </tr>
+    <tr>
+        <td><p>Created:</p></td>
+        <td><p>{{ member.created|date:'Y-m-d H:i:s' }}</p></td>
+    </tr>
+    <th><a href="{% url 'member_checkin:member_update' member.id %}"
+           class="btn-floating btn-large waves-effect waves-light red"><i
+            class="material-icons">edit</i></a>
+    </th>
+    <th><a href="{% url 'member_checkin:member_delete' member.id %}"
+           class="btn-floating btn-large waves-effect waves-light red"><i
+            class="material-icons">delete</i></a></th>
+    </tr>
+</table>

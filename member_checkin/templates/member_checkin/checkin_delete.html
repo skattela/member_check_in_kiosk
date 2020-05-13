@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "materialize/css/materialize.css" %}">
+<script type="text/javascript" src="{% static "materialize/js/materialize.js" %}"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+        <a href="#" class="brand-logo center">Check In Delete</a>
+    </div>
+</nav>
+
+
+<ul id="slide-out" class="sidenav sidenav-fixed">
+    <li>
+        <div class="user-view">
+            <div class="background">
+            </div>
+            <a><img class="circle"></a>
+            <a><span class="white-text name">John Doe</span></a>
+            <a><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+    </li>
+    <li><a href="{% url 'member_checkin:members' %}"><i class="material-icons">person</i>Members</a></li>
+    <li><a href="{% url 'member_checkin:checkins' %}"><i class="material-icons">insert_chart</i>Check Ins</a></li>
+</ul>
+
+<script>M.AutoInit();</script>
+
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+     <p>Are you sure you want to delete check in "{{ object }}"?</p>
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+  </button>
+</form>

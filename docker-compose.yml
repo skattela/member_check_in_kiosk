@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  database:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=hello_django
+      - POSTGRES_PASSWORD=hello_django
+      - POSTGRES_DB=hello_django_dev
+  app:
+    build: .
+    container_name: writband_lap_counter
+    ports:
+      - 80:80
